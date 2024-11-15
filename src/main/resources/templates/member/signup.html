@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<h1 th:if="${msg != null}" th:text="${msg}"></h1>
+
+<form action="/member/signup" method="post" th:object="${securityMemberDTO}">
+
+    이름 : <input name="name" th:field="*{name}" class="name"> <br>
+    <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"  class="fieldError"></p>
+
+    email : <input name="email" th:field="*{email}"> <br>
+    <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"  class="fieldError"></p>
+
+    password : <input name="password" required th:field="*{password}"> <br>
+    <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"  class="fieldError"></p>
+
+
+    address : <input name="address" th:field="*{address}" required > <br>
+    <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}"  class="fieldError"></p>
+
+
+    <button type="submit">가입하기</button>
+    <button>로그인</button>
+</form>
+</script>
+</body>
+</html>
